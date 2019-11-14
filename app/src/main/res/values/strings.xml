@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">E-Commerce</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_search">Search</string>
+    <string name="action_notifications">Notifications</string>
+    <string name="action_cart">Cart</string>
+    <string name="forgot_password_info">Please enter your email address. We will send you an email for you to recover
+        your password.
+    </string>
+</resources>

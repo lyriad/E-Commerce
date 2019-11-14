@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:showIn="navigation_view"
+        tools:ignore="HardcodedText">
+
+    <group android:checkableBehavior="single">
+        <item
+                android:id="@+id/nav_home"
+                android:title="Home"
+                android:icon="@drawable/ic_home_24dp"/>
+        <item
+                android:id="@+id/nav_categories"
+                android:title="Categories"
+                android:icon="@drawable/ic_card_travel_24dp"/>
+        <item
+                android:id="@+id/nav_products"
+                android:title="Products"
+                android:icon="@drawable/ic_view_list_24dp"/>
+        <item
+                android:id="@+id/nav_tracking"
+                android:title="Track packages"
+                android:icon="@drawable/ic_gps_fixed_24dp"/>
+        <item
+                android:id="@+id/nav_locations"
+                android:title="Locations"
+                android:icon="@drawable/ic_location_on_24dp"/>
+        <item
+                android:id="@+id/nav_profile"
+                android:title="Profile"
+                android:icon="@drawable/ic_account_circle_24dp"/>
+        <item
+                android:id="@+id/nav_help"
+                android:title="Help"
+                android:icon="@drawable/ic_help_outline_24dp"/>
+        <item
+                android:id="@+id/nav_logout"
+                android:title="Sign out"
+                android:icon="@drawable/ic_exit_to_app_24dp"/>
+    </group>
+
+</menu>

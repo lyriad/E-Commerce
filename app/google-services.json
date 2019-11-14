@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "622012446619",
+    "firebase_url": "https://e-commerce-9c283.firebaseio.com",
+    "project_id": "e-commerce-9c283",
+    "storage_bucket": "e-commerce-9c283.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622012446619:android:8b83691a3d4f39c90cd33e",
+        "android_client_info": {
+          "package_name": "com.lyriad.e_commerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622012446619-dg6k0uujjltutlv4b3761iu3ivfafk6h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW477u-haJj9DjaWPyNc_HHs_RfA2Cc18"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622012446619-dg6k0uujjltutlv4b3761iu3ivfafk6h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

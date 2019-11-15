@@ -1,11 +1,8 @@
 package com.lyriad.e_commerce.Activities;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -17,6 +14,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.lyriad.e_commerce.Models.Category;
 import com.lyriad.e_commerce.R;
 import com.lyriad.e_commerce.Sessions.UserSession;
 import com.lyriad.e_commerce.Tasks.SendDataTask;
@@ -26,14 +24,15 @@ import com.lyriad.e_commerce.Utils.Validator;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.UUID;
-
 public class RegisterCategoryActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView image;
     private EditText name;
     private ExtendedFloatingActionButton regButton;
     private LoadingDots progress;
+
+    private String action;
+    private Category category;
 
     private UserSession session;
     private Uri imageUri;
@@ -57,7 +56,19 @@ public class RegisterCategoryActivity extends AppCompatActivity implements View.
         backButton.setOnClickListener(this);
         image.setOnClickListener(this);
         regButton.setOnClickListener(this);
+
+        try {
+
+            action = getIntent().getExtras().getString("action");
+            category = (Category) getIntent().getExtras().getSerializable("category");
+
+        } catch(NullPointerException e) {
+            action = "register";
+            category = null;
+        }
     }
+
+    onCreateV
 
     @Override
     public void onClick(View v) {
@@ -103,24 +114,12 @@ public class RegisterCategoryActivity extends AppCompatActivity implements View.
             return;
         }
 
-        if (Validator.isEmpty(name) || imageUri == null) {
-            Toast.makeText(RegisterCategoryActivity.this, "The image can't be empty", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        if (validateFields()) return;
 
         regButton.setVisibility(View.GONE);
         progress.setVisibility(View.VISIBLE);
 
-        StorageReference filePath = fireStorage
-                .child("category/" + UUID.randomUUID().toString() + ".jpg");
 
-        final SendDataTask regPhotoTask = new SendDataTask(Constants.API_CATEGORIES, "PUT", response -> {
-            Log.i("EVENT", "Photo saved successfully in api");
-            finish();
-        }, error -> {
-            Log.i("WARNING", "Photo couldn't be saved in api");
-            finish();
-        });
 
         final SendDataTask regCategoryTask = new SendDataTask(Constants.API_CATEGORIES, "POST", (Response.Listener<JSONObject>) response -> {
             try {
@@ -178,5 +177,23 @@ public class RegisterCategoryActivity extends AppCompatActivity implements View.
             regButton.setVisibility(View.VISIBLE);
             progress.setVisibility(View.GONE);
         }
+    }
+
+    private boolean validateFields() {
+
+        if (Validator.isEmpty(name)) {
+            return false;
+
+        } else if (imageUri == null) {
+
+            new MaterialAlertDialogBuilder(RegisterCategoryActivity.this)
+                    .setTitle("Empty field")
+                    .setMessage("The image can't be empty")
+                    .setPositiveButton("Ok", null)
+                    .show();
+            return false;
+        }
+
+        return true;
     }
 }

@@ -1,6 +1,5 @@
 package com.lyriad.e_commerce.Activities;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
@@ -31,10 +30,8 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.Objects;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class RegisterUserActivity extends AppCompatActivity implements View.OnClickListener {
 

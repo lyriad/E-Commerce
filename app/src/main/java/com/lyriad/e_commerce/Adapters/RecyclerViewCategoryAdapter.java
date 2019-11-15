@@ -1,21 +1,21 @@
 package com.lyriad.e_commerce.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.lyriad.e_commerce.Activities.RegisterCategoryActivity;
 import com.lyriad.e_commerce.Fragments.ProductsFragment;
 import com.lyriad.e_commerce.Models.Category;
 import com.lyriad.e_commerce.R;
 import com.lyriad.e_commerce.Utils.FragmentNavigationManager;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +56,13 @@ public class RecyclerViewCategoryAdapter extends RecyclerView.Adapter<RecyclerVi
         if (isProvider) {
             holder.settings.setVisibility(View.VISIBLE);
 
-            holder.settings.setOnClickListener(v -> Toast.makeText(mContext, categories.get(position).getName(), Toast.LENGTH_SHORT).show());
+            holder.settings.setOnClickListener(v -> {
+
+                Intent intent = new Intent(mContext, RegisterCategoryActivity.class);
+                intent.putExtra("action", "update");
+                intent.putExtra("category", categories.get(position));
+                mContext.startActivity(intent);
+            });
         }
 
     }

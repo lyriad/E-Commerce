@@ -184,8 +184,10 @@ public class RegisterProductActivity extends AppCompatActivity implements View.O
         final String itemCode = UUID.randomUUID().toString().substring(0, 13);
         JSONObject productData = new JSONObject();
 
+        String ext = imageUri.toString().substring(imageUri.toString().lastIndexOf('.'));
         StorageReference filePath = fireStorage
-                .child("product/" + itemCode + ".jpg");
+                .child("product/")
+                .child(itemCode + ext);
 
         final SendDataTask regPhotoTask = new SendDataTask(Constants.API_PRODUCTS, "PUT", response -> {
             Log.i("EVENT", "Photo saved successfully in api");
